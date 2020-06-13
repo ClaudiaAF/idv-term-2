@@ -1,26 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Info from './components/Info';
+import Spells from './components/Spells';
+import ResponsiveDrawer from './components/ResponsiveDrawer';
 
-function App() {
+
+
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      chartData:{}
+    }
+  }
+
+
+  componentWillMount(){
+    this.getChartData();
+  }
+  
+
+  getChartData(){
+    //api call here
+    this.setState({
+      chartData:{
+        labels: ['wizards', 'warlock', 'sprite', 'elf', 'half-elf'],
+        datasets:[
+            {
+                label: 'Profiency',
+                data:[
+                    200,
+                    600,
+                    400,
+                    300,
+                    100
+                ],
+                backgroundColor:[
+                    'red',
+                    'blue',
+                    'green',
+                    'yellow',
+                    'orange',
+                    'purple'
+                ]
+            }
+        ]
+    }
+    });
+  }
+
+  render(){
   return (
+   
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <body className="App-header">
+        <ResponsiveDrawer />
+        <Spells />
+        
+        
+      </body>
     </div>
+    
   );
 }
+}
+
+
 
 export default App;
