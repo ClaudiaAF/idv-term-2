@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import {Line, Pie} from 'react-chartjs-2';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router';
 
@@ -21,7 +21,7 @@ static defaultProps = {
     render(){
         return(
             <div className="chart">
-                <Bar
+                <Line
                     data={this.state.chartData}
                     options={{
                         title:{
@@ -36,38 +36,7 @@ static defaultProps = {
                     }}
                     height= "100px" 
                 />
-{/* 
-                <Line
-                    data={this.state.chartData}
-                    options={{
-                        title:{
-                            display:this.props.displayTitle,
-                            text:"Profiencies" + " " + this.props.category,
-                            fontSize:25
-                        },
-                        legend:{
-                            display:this.props.displayLegend,
-                            position:this.props.legendPosition
-                        }
-                    }}
-                    height="200px" 
-                />
 
-                <Pie
-                    data={this.state.chartData}
-                    options={{
-                        title:{
-                            display:this.props.displayTitle,
-                            text:"Profiencies" + " " + this.props.category,
-                            fontSize:25
-                        },
-                        legend:{
-                            display:this.props.displayLegend,
-                            position:this.props.legendPosition
-                        }
-                    }}
-                    height="200px" 
-                /> */}
             </div>
         )
     }

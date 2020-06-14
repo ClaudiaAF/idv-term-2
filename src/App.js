@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Info from './components/Info';
 import Spells from './components/Spells';
 import ResponsiveDrawer from './components/ResponsiveDrawer';
-
-
+import Info from './components/Info';
 
 class App extends Component {
   constructor(){

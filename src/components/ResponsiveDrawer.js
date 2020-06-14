@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -14,13 +13,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Info from './Info';
 import Layout from './Layout';
-import CardsLong from './CardsLong';
-import CardsSmall from './CardsSmall';
 import {
   BrowserRouter as Router,
   Switch,
@@ -111,7 +107,6 @@ function ResponsiveDrawer(props) {
           </ListItem>
         ))}
       <Switch>
-        <Route exact path="/" component={ResponsiveDrawer} />
         <Route path="/display" component={Display} />
         <Route path="/info" component={Info} />
       </Switch>

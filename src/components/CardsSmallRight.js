@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import PieChart from './PieChart';
+import PieChartRight from './PieChartRight';
 
 const useStyles = makeStyles({
   root: {
@@ -25,7 +25,7 @@ export default function MediaCard() {
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia className={classes.media}>
-        <PieChart />
+        <PieChartRight />
         </CardMedia>
                   
         <CardContent>
