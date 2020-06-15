@@ -1,4 +1,6 @@
 import React from 'react';
+import App from '../../App';
+import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
@@ -14,27 +16,24 @@ import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Info from './Info';
-import Layout from './Layout';
+import { makeStyles, useTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import LineGraph from '../Charts/LineGraph';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import Display from './Display';
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+import PieChartRight from '../Charts/PieChartRight';
+import Types from '../Charts/Types';
+import '../Navigation/drawer.module.css';
+import Logo from './unnamed.png';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
-    logo: {
-        maxWidth: 160,
-      },
-
   root: {
     display: 'flex',
-    
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -46,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      backgroundColor: "#930C10"
+      backgroundColor: 'transparent'
     },
   },
   menuButton: {
@@ -59,8 +58,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#290000",
-    color: "white"
+    backgroundImage: 'url(http://i.imgur.com/q033YDw.jpg)',
   },
   content: {
     flexGrow: 1,
@@ -68,14 +66,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -84,34 +79,57 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Divider />
-      <Router>
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text} >
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon textColor="primary" /> : <MailIcon textColor="primary"/>}</ListItemIcon>
-            <Link to="/Display" style={{ textDecoration: 'none', color: 'white'}} ><ListItemText primary={text} textColor="primary" /></Link>
-          </ListItem>
-        ))}
-      </List>
-      <Divider color="primary"/>
+      
+
       
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon textColor="white"/> : <MailIcon textColor="primary" />}</ListItemIcon>
+      <Router>
+        
+      
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Sets" style={{textDecoration:'none', color:'white'}}>Sets</a>
+          </ListItem>
+       
+
+       
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Qualities" style={{textDecoration:'none', color:'white'}}>Qualities</a>
+          </ListItem>
           
 
-            <Link to="/Info" style={{ textDecoration: 'none', color: 'white'}} ><ListItemText primary={text} /></Link>
-           
+         
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Types" style={{textDecoration:'none', color:'white'}}>Types</a>
           </ListItem>
-        ))}
-      <Switch>
-        <Route path="/display" component={Display} />
-        <Route path="/info" component={Info} />
-      </Switch>
+          
+
+          
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Factions" style={{textDecoration:'none', color:'white'}}>Factions</a>
+          </ListItem>
+          
+
+        
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Classes" style={{textDecoration:'none', color:'white'}}>Classes</a>
+          </ListItem>
+       
+
+       
+          <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/Races" style={{textDecoration:'none', color:'white'}}>Races</a>
+          </ListItem>
+          
+          </Router>
       </List>
-       </Router>
+      
+     
     </div>
   );
 
@@ -120,7 +138,7 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar} >
+      <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -129,18 +147,19 @@ function ResponsiveDrawer(props) {
             onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
-              
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap font="Montserrat" >
-          Dungeons and Dragons
+          <Typography>
+            
+
+            <img src={Logo} style={{height:"80px", width:"99px", marginLeft:"1530%", marginTop:"30%"}}/>
+
+
           </Typography>
-          
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
-
-
+        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -152,7 +171,7 @@ function ResponsiveDrawer(props) {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, 
+              keepMounted: true, // Better open performance on mobile.
             }}
           >
             {drawer}
@@ -173,12 +192,21 @@ function ResponsiveDrawer(props) {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Typography paragraph>
-          <Layout />
+          
+        </Typography>
+        <Typography paragraph>
         </Typography>
       </main>
     </div>
   );
 }
 
-  
-  export default ResponsiveDrawer;
+ResponsiveDrawer.propTypes = {
+  /**
+   * Injected by the documentation to work in an iframe.
+   * You won't need it on your project.
+   */
+  window: PropTypes.func,
+};
+
+export default ResponsiveDrawer;

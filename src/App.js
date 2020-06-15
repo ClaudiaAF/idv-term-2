@@ -1,66 +1,51 @@
-import React, { Component } from 'react';
-import Spells from './components/Spells';
-import ResponsiveDrawer from './components/ResponsiveDrawer';
-import Info from './components/Info';
+import React from 'react';
+import ResponsiveDrawer from './components/Navigation/ResponsiveDrawer';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
-class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      chartData:{}
-    }
-  }
+import LineGraph from './components/Charts/LineGraph';
+import PieChart from './components/Charts/PieChart';
+import PieChartRight from './components/Charts/PieChartRight';
+import Faction from './components/Charts/Faction';
+import Qualities from './components/Charts/Qualities'
+import Types from './components/Charts/Types';
 
 
-  componentWillMount(){
-    this.getChartData();
-  }
+  function App() {
+    return (
+      <div className="Routes">
+          <Router>
+          <ResponsiveDrawer/>
   
+          <Switch>
+            <Route path="/Sets" component={LineGraph} >
+                <LineGraph />
+            </Route>
+            <Route path="/Classes" component={PieChart}>
+                <PieChart />
+            </Route>
+            <Route path="/Races" component={PieChartRight}>
+                <PieChartRight />
+            </Route>
+            <Route path="/Factions" component={Faction}>
+                <Faction />
+            </Route>
+            <Route path="/Qualities" component={Qualities}>
+                <Qualities />
+            </Route>
+            <Route path="/Types" component={Types}>
+                <Types />
+            </Route>
+            
+          </Switch>
 
-  getChartData(){
-    //api call here
-    this.setState({
-      chartData:{
-        labels: ['wizards', 'warlock', 'sprite', 'elf', 'half-elf'],
-        datasets:[
-            {
-                label: 'Profiency',
-                data:[
-                    200,
-                    600,
-                    400,
-                    300,
-                    100
-                ],
-                backgroundColor:[
-                    'red',
-                    'blue',
-                    'green',
-                    'yellow',
-                    'orange',
-                    'purple'
-                ]
-            }
-        ]
-    }
-    });
+      </Router>
+      </div>
+    );
   }
-
-  render(){
-  return (
-   
-    <div className="App">
-      <body className="App-header">
-        <ResponsiveDrawer />
-        <Spells />
-        
-        
-      </body>
-    </div>
-    
-  );
-}
-}
 
 
 
