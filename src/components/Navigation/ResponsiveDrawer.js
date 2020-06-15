@@ -85,7 +85,11 @@ function ResponsiveDrawer(props) {
       <List>
       <Router>
         
-      
+      <ListItem button>
+            <ListItemIcon></ListItemIcon>
+            <a href="http://localhost:3000/HomePage" style={{textDecoration:'none', color:'white'}}>Home</a>
+          </ListItem>
+
           <ListItem button>
             <ListItemIcon></ListItemIcon>
             <a href="http://localhost:3000/Sets" style={{textDecoration:'none', color:'white'}}>Sets</a>

@@ -64,7 +64,7 @@ const LineGraph = () => {
   return (
     <div className="Chart" style={{ height: "500px", width: "1400px", marginLeft: "18%"}}>
       <h1 className="header" style={{color: 'white'}}>Sets</h1>
-      <p className="bodyText" style={{color: 'white'}}>This is the factions set for the cards. we get three different types, blah, blah, and blah.</p>
+      <p className="bodyText" style={{color: 'white'}}>Every Hearthstone card is part of a set. You can complete the Basic Set simply by playing the game, but to get cards from the other sets you’ll have to spend some gold.</p>
       
       <Line data={chartData} options = {{
         legend: {

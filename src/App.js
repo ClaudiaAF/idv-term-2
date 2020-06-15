@@ -12,6 +12,7 @@ import PieChartRight from './components/Charts/PieChartRight';
 import Faction from './components/Charts/Faction';
 import Qualities from './components/Charts/Qualities'
 import Types from './components/Charts/Types';
+import HomePage from './components/SetsPage/HomePage';
 
 
   function App() {
@@ -38,6 +39,9 @@ import Types from './components/Charts/Types';
             </Route>
             <Route path="/Types" component={Types}>
                 <Types />
+            </Route>
+            <Route path="/HomePage" component={HomePage}>
+                <HomePage />
             </Route>
             
           </Switch>
