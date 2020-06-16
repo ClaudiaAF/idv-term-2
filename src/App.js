@@ -17,7 +17,7 @@ import HomePage from './components/SetsPage/HomePage';
 
   function App() {
     return (
-      <div className="Routes">
+      <div className="App">
           <Router>
           <ResponsiveDrawer/>
   
